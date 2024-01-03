@@ -1,0 +1,184 @@
+/* All */
+:root {
+  --darkBlue: #2d3047;
+  --yellow: #ffc700;
+  --lightGray: #f0efef7d;
+  --white: #ffffff;
+  --headerFont: "Times New Roman", Times, serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #e5e5e5;
+  min-height: 100vh;
+}
+
+/* Utility */
+
+.bold {
+  font-weight: 600;
+}
+
+.textAlignCenter {
+  text-align: center;
+}
+
+.textWrap {
+  white-space: normal;
+}
+
+/* Nav */
+.navContainer {
+  width: 100vw;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--darkBlue);
+  padding: 2vw;
+}
+
+.navLinksContainer {
+  width: 40%;
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 5%;
+}
+
+.navLink {
+  color: var(--lightGray);
+  text-decoration: none;
+  font-family: var(--headerFont);
+  font-size: 1.2rem;
+  margin: auto 5%;
+}
+
+nav a.active {
+  color: var(--white);
+}
+
+nav a:hover {
+  color: var(--yellow);
+}
+
+.logoContainer {
+  margin-left: 2%;
+  text-decoration: none;
+}
+
+.logoStyle {
+  color: var(--yellow);
+  font-size: 1.5rem;
+  font-family: var(--headerFont);
+  font-weight: 500;
+}
+
+/* Header */
+.headerContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.headerTextContainer {
+  display: flex;
+  padding: 6% 0% 1% 6%;
+  font-size: 1.4rem;
+  font-family: var(--headerFont);
+  font-weight: 500;
+}
+
+.dividerStyle {
+  width: 90vw;
+  margin: 1vh 5vw;
+  border: 1px solid #00000025;
+}
+
+/* Home */
+
+.myCollectionSection {
+  display: flex;
+  margin: 4vh 6vw;
+  width: 88vw;
+  flex-wrap: wrap;
+}
+
+.MuiCard-root.myCollectionCard {
+  padding: 2% 4%;
+  margin-bottom: 5vh;
+  margin-left: 1vw;
+  margin-right: 1vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 20vw;
+  height: 50vh;
+  box-shadow: 2px 4px 8px #00000045;
+}
+
+.myCollectionCardDetails {
+  padding-left: 3%;
+  margin-top: 1vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.MuiTypography-root.bookTitleContainer {
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+/* Search */
+
+.searchContent {
+  display: flex;
+  justify-content: center;
+  margin-top: 2vh;
+}
+
+.searchResultSection {
+  margin: 2vw auto;
+  width: 88vw;
+}
+
+.MuiCard-root.searchResultCard {
+  padding: 2% 4%;
+  margin-bottom: 3vh;
+  display: flex;
+  box-shadow: 2px 4px 8px #00000045;
+}
+
+.cardDetails {
+  padding-left: 3%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.MuiTypography-root.bookName {
+  font-weight: 600;
+  font-size: 1.15rem;
+}
+
+.MuiTypography-root.bookAuthor {
+  font-style: italic;
+}
+
+.MuiButton-root.addButton {
+  background-color: var(--lightGray);
+  box-shadow: 2px 2px 5px #0000002b;
+  width: 215px;
+}
+
+.MuiButton-root.deleteButton {
+  background-color: var(--lightGray);
+  box-shadow: 2px 2px 5px #0000002b;
+  width: 230px;
+}
+
+/**/
