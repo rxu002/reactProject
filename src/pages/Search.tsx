@@ -2,7 +2,7 @@ import { useState } from "react";
 import { SearchBookCard } from "../components/SearchBookCard";
 import { PageHeader } from "../components/Header";
 import { SearchBar } from "../components/SearchBar";
-import { LinearProgress, Typography } from "@mui/material";
+import { LinearProgress } from "@mui/material";
 
 export const Search = () => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -29,7 +29,6 @@ export const Search = () => {
           <p className="searchContent">{message}</p>
         ) : (
           <>
-            <Typography>{books.length} books found</Typography>
             {books.map((book) => {
               return <SearchBookCard key={book.key} book={book} />;
             })}

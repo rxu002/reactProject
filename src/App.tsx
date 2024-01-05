@@ -10,6 +10,7 @@ import { RootLayout } from "./layouts/RootLayout";
 //Pages
 import { Home } from "./pages/Home";
 import { Search } from "./pages/Search";
+import { BookDetails } from "./components/BookDetails";
 
 function App() {
   const router = createBrowserRouter(
@@ -17,6 +18,7 @@ function App() {
       <Route path="/" element={<RootLayout />}>
         <Route index element={<Home />} />
         <Route path="search" element={<Search />} />
+        <Route path="book/works/:var" element={<BookDetails />} />
       </Route>
     )
   );

@@ -1,13 +1,7 @@
-import {
-  IconButton,
-  InputAdornment,
-  TextField,
-  autocompleteClasses,
-} from "@mui/material";
+import { IconButton, InputAdornment, TextField } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
-import { ChangeEvent, Dispatch, SetStateAction, useState } from "react";
-
-// pull search bar out from book card, see how to link it together
+import { ChangeEvent, Dispatch, SetStateAction } from "react";
+import { useGetSearchedBooksQuery } from "../slices/bookApiSlice";
 
 const queryWithPlus = (string: string) => {
   const stringArray = string.split(" ");

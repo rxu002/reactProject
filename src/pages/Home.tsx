@@ -20,6 +20,9 @@ export const Home = () => {
     setMyBooks(sortedCollection);
   }, [bookCollection]);
 
+  // add filter component
+  // get title, author and rating given from filter component
+
   return (
     <div>
       <PageHeader pageName="My Collection" />

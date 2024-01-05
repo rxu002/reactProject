@@ -181,4 +181,25 @@ nav a:hover {
   width: 230px;
 }
 
-/**/
+/*book details*/
+.detailsSection {
+  display: flex;
+  margin: 3vh 7vw;
+}
+
+.textSection {
+  margin-left: 3vw;
+}
+
+.MuiButton-root.deleteButton2 {
+  background-color: var(--lightGray);
+  box-shadow: 2px 2px 5px #0000002b;
+  width: 180px;
+  margin-top: 2vh;
+}
+
+.MuiButton-root.addButton2 {
+  background-color: var(--lightGray);
+  box-shadow: 2px 2px 5px #0000002b;
+  width: 215px;
+}
