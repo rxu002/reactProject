@@ -17,7 +17,25 @@ export const Home = () => {
     const sortedCollection = storedBooksJson.sort((a, b) =>
       a.title.localeCompare(b.title)
     );
-    setMyBooks(sortedCollection);
+    if (sortedCollection.length > 1) {
+      let readingStatus = "Unread";
+      const booksWithStatus = sortedCollection.map((book) => {
+        const localStorageKeys = Object.keys(localStorage);
+        if (localStorageKeys) {
+          const foundKey = localStorageKeys.find(
+            (key) => key === `${book.key}-ReadingStatus`
+          );
+          if (foundKey) {
+            const statusItem = localStorage.getItem(foundKey);
+            readingStatus = statusItem ? JSON.parse(statusItem) : "Unread";
+          } else {
+            readingStatus = "Unread";
+          }
+        }
+        return { ...book, status: readingStatus };
+      });
+      setMyBooks(booksWithStatus);
+    }
   }, [bookCollection]);
 
   // add filter component
