@@ -19,8 +19,8 @@ export const ReadingStatusSelect: React.FC<ReadingStatusSelectProp> = ({
   useEffect(() => {
     const storedStatus = localStorage.getItem(`${bookFullKey}-ReadingStatus`);
     if (storedStatus) {
-      const storedStatusJSON = JSON.parse(storedStatus);
-      setStatus(storedStatusJSON);
+      const storedStatusString = JSON.parse(storedStatus);
+      setStatus(storedStatusString);
     }
   }, []);
 

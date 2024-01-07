@@ -30,6 +30,29 @@ export const CollectionBookCard: React.FC<CollectionBookCardProp> = ({
     ? JSON.parse(readingStatus)
     : "Unread";
 
+  let bookCover;
+  if (book.oclc && Array.isArray(book.oclc) && book.oclc.length > 0) {
+    bookCover = (
+      <img
+        src={`https://covers.openlibrary.org/b/oclc/${book.oclc[0]}-L.jpg?default=false`}
+        onError={handleNoCover}
+        width="120px"
+        height="150px"
+      />
+    );
+  } else if (book.oclc && !Array.isArray(book.oclc)) {
+    bookCover = (
+      <img
+        src={`https://covers.openlibrary.org/b/oclc/${book.oclc}-L.jpg?default=false`}
+        onError={handleNoCover}
+        width="120px"
+        height="150px"
+      />
+    );
+  } else {
+    bookCover = <img src={noCoverLink} width="120px" height="150px" />;
+  }
+
   return (
     <div>
       {
@@ -43,23 +66,7 @@ export const CollectionBookCard: React.FC<CollectionBookCardProp> = ({
             }}
             onClick={() => dispatch(deleteBooks(book.key))}
           />
-          {book.oclc && Array.isArray(book.oclc) && book.oclc.length > 0 ? (
-            <img
-              src={`https://covers.openlibrary.org/b/oclc/${book.oclc[0]}-L.jpg?default=false`}
-              onError={handleNoCover}
-              width="120px"
-              height="150px"
-            />
-          ) : book.oclc && !Array.isArray(book.oclc) ? (
-            <img
-              src={`https://covers.openlibrary.org/b/oclc/${book.oclc}-L.jpg?default=false`}
-              onError={handleNoCover}
-              width="120px"
-              height="150px"
-            />
-          ) : (
-            <img src={noCoverLink} width="120px" height="150px" />
-          )}
+          {bookCover}
           <section className="myCollectionCardDetails">
             <div onClick={handleTitleClick}>
               <Typography className="textAlignCenter textWrap bookTitleContainer">

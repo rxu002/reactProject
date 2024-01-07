@@ -18,9 +18,9 @@ export const Home = () => {
 
   useEffect(() => {
     const storedBooks = localStorage.getItem("bookCollection");
-    const storedBooksJson: any[] =
+    const storedBooksArray: any[] =
       storedBooks !== null ? JSON.parse(storedBooks) : [];
-    const sortedCollection = storedBooksJson.sort((a, b) =>
+    const sortedCollection = storedBooksArray.sort((a, b) =>
       a.title.localeCompare(b.title)
     );
     if (sortedCollection.length > 1) {
@@ -41,9 +41,6 @@ export const Home = () => {
         return { ...book, status: readingStatus };
       });
 
-      console.log(filterValues);
-
-      //filter items
       const filteredResult = booksWithStatus.filter(
         (book) =>
           book.title.toLowerCase().includes(filterValues.title.toLowerCase()) &&
@@ -55,7 +52,6 @@ export const Home = () => {
             .toLowerCase()
             .includes(filterValues.readingStatus.toLowerCase())
       );
-      console.log(filteredResult);
       setMyBooks(filteredResult);
     }
   }, [bookCollection, filterValues]);

@@ -48,7 +48,6 @@ export const BookDetails = () => {
     description = foundWork.description;
   }
 
-  // improve for image for if no oclc found
   return (
     <div>
       <PageHeader pageName="Details" />

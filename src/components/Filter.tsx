@@ -1,5 +1,5 @@
 import { Box, TextField } from "@mui/material";
-import React, { Dispatch, SetStateAction, useState } from "react";
+import React, { Dispatch, SetStateAction } from "react";
 
 type FilterProp = {
   filterValues: any;

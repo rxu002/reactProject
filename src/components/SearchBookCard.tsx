@@ -21,11 +21,12 @@ export const SearchBookCard: React.FC<SearchBookCardProp> = ({ book }) => {
 
   useEffect(() => {
     const bookCollection = localStorage.getItem("bookCollection");
-    const bookCollectionJson: any[] =
-      bookCollection !== null ? JSON.parse(bookCollection) : [];
+    const bookCollectionArray: any[] = bookCollection
+      ? JSON.parse(bookCollection)
+      : [];
     const checkBookInCollection = () => {
       if (
-        bookCollectionJson.some((bookStored) => bookStored.key === book.key)
+        bookCollectionArray.some((bookStored) => bookStored.key === book.key)
       ) {
         setInBookCollection(true);
       } else {
@@ -35,27 +36,34 @@ export const SearchBookCard: React.FC<SearchBookCardProp> = ({ book }) => {
     checkBookInCollection();
   }, [addedToCollection]);
 
+  let bookCover;
+  if (book.oclc && Array.isArray(book.oclc) && book.oclc.length > 0) {
+    bookCover = (
+      <img
+        src={`https://covers.openlibrary.org/b/oclc/${book.oclc[0]}-L.jpg?default=false`}
+        onError={handleNoCover}
+        width="120px"
+        height="150px"
+      />
+    );
+  } else if (book.oclc && !Array.isArray(book.oclc)) {
+    bookCover = (
+      <img
+        src={`https://covers.openlibrary.org/b/oclc/${book.oclc}-L.jpg?default=false`}
+        onError={handleNoCover}
+        width="120px"
+        height="150px"
+      />
+    );
+  } else {
+    bookCover = <img src={noCoverLink} width="120px" height="150px" />;
+  }
+
   return (
     <div>
       {
         <Card className="searchResultCard">
-          {book.oclc && Array.isArray(book.oclc) && book.oclc.length > 0 ? (
-            <img
-              src={`https://covers.openlibrary.org/b/oclc/${book.oclc[0]}-L.jpg?default=false`}
-              onError={handleNoCover}
-              width="120px"
-              height="150px"
-            />
-          ) : book.oclc && !Array.isArray(book.oclc) ? (
-            <img
-              src={`https://covers.openlibrary.org/b/oclc/${book.oclc}-L.jpg?default=false`}
-              onError={handleNoCover}
-              width="120px"
-              height="150px"
-            />
-          ) : (
-            <img src={noCoverLink} width="120px" height="150px" />
-          )}
+          {bookCover}
           <section className="cardDetails">
             <Typography className="bookName" variant="body1">
               {book.title}
